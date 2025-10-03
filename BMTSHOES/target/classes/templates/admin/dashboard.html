@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+</head>
+<body>
+<!-- Header -->
+<div th:replace="fragments/admin-header :: *"></div>
+
+<h2 class="mb-4">Admin Dashboard</h2>
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="card text-white bg-primary mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Doanh thu hôm nay</h5>
+                <p class="card-text">12,500,000 VNĐ</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-white bg-success mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Đơn hàng mới</h5>
+                <p class="card-text">34</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-white bg-warning mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Sản phẩm bán chạy</h5>
+                <p class="card-text">Nike Air Max 270</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-white bg-danger mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Khách hàng mới</h5>
+                <p class="card-text">12</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Biểu đồ -->
+<div class="card mt-4">
+    <div class="card-body">
+        <h5 class="card-title">Doanh thu theo tháng</h5>
+        <canvas id="revenueChart"></canvas>
+    </div>
+</div>
+
+<script>
+    const ctx = document.getElementById('revenueChart');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Th1', 'Th2', 'Th3', 'Th4', 'Th5', 'Th6'],
+            datasets: [{
+                label: 'Doanh thu (VNĐ)',
+                data: [5, 8, 6, 12, 10, 15],
+                borderColor: 'blue',
+                fill: false,
+                tension: 0.3
+            }]
+        }
+    });
+</script>
+
+<!-- Footer -->
+<div th:replace="fragments/admin-footer :: *"></div>
+</body>
+</html>
